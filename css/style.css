@@ -1,0 +1,141 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+  font-size: 62.5%;
+}
+
+label, button, input {
+  border: none;
+  outline: none;
+}
+
+button, label {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+/** FONTS COLOR **/
+/** FONTS **/
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  padding: 40px 60px;
+}
+.header::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/logo/banner.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+.header_logo {
+  width: 200px;
+}
+.header_cta {
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+.header_cta h1 {
+  display: flex;
+  flex-direction: column;
+  color: #FFD15B;
+  font-family: "Anton", sans-serif;
+  font-weight: 100;
+  text-align: left;
+  font-size: 2.8rem;
+  text-transform: uppercase;
+}
+.header_cta div {
+  position: relative;
+  max-width: 1024px;
+  width: 100%;
+}
+.header_cta div input {
+  width: 100%;
+  height: 70px;
+  padding-left: 30px;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+.header_cta div input::placeholder {
+  font-size: 1rem;
+}
+.header_cta div input:focus {
+  outline: 2px solid #FFD15B;
+}
+.header_cta div label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: #000;
+}
+.header_cta div label:focus, .header_cta div label:hover {
+  background-color: #FFD15B;
+}
+.header_cta div label:focus::after, .header_cta div label:hover::after {
+  color: #000;
+}
+.header_cta div label::after {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #fff;
+}
+@media screen and (max-width: 1160px) {
+  .header_cta div label::after {
+    font-size: 1rem;
+  }
+}
+.header_cta div button {
+  display: none;
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+}
+.header_cta div button:hover::after, .header_cta div button:focus::after {
+  color: #FFD15B;
+}
+.header_cta div button::after {
+  content: "\f00d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #7A7A7A;
+}
+
+/*# sourceMappingURL=style.css.map */

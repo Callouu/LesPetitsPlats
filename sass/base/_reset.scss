@@ -1,0 +1,23 @@
+*, ::before, ::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0 auto;
+    font-size: 62.5%;
+}
+
+label, button, input{
+    border: none;
+    outline: none;
+}
+
+button, label{
+    cursor: pointer;
+}
+
+ul{
+    list-style: none;
+}
