@@ -1,7 +1,7 @@
 .header {
     position: relative;
     @include flex(column);
-    height: 50vh;
+    height: 660px;
     padding: 40px 60px;
 
     &::after {
@@ -35,7 +35,6 @@
             color: $color-primary;
             font-family: $typography-title;
             font-weight: 100;
-            text-align: left;
             font-size: 2.8rem;
             text-transform: uppercase;
         }
