@@ -23,7 +23,7 @@
                 <span>du quotidien, simples et délicieuses</span>
             </h1>
             <div>
-                <input type="text" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
+                <input type="text" onChange="home.search(this.value)" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
                 <button aria-hidden="true" aria-label="clear"></button>
                 <label for="search-recipe" tabindex="0" aria-label="Search recipe"></label>
             </div>    
