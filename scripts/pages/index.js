@@ -19,6 +19,7 @@ class Home {
         // Affiche les dropdowns
         // dropdown ingredient
     }
+    // Affichage dynamique des recettes
     refreshRecipes(recipes) {
         this.home.innerHTML=''
         recipes.forEach(recipe => {
@@ -26,8 +27,10 @@ class Home {
             this.home.append(templateRecipe.createRecipeCard())
         })
     }
+    // Affichage dynamique des filtres
     refreshDropdowns() {
         let dropdownData = this.processDropdowns(this.recipeFiltered)
+        // dropdown Ingrédients
         this.ingredientsDropdown.elements = dropdownData.ingredients
         this.ingredientsDropdown.showElements()
         // dropdown appliances
@@ -37,8 +40,8 @@ class Home {
         this.ustensilsDropdown.elements = dropdownData.ustensils
         this.ustensilsDropdown.showElements()
     }
+    // Affiche la listes des filtres
     processDropdowns(recipes) {
-        // based on recipes left, process drop downs data
         let data = {
             "ingredients": [],
             "appliances": [],
@@ -66,6 +69,7 @@ class Home {
         }
         return data
     }
+    // Recherche via la barre de recherche
     search(value) {
         this.recipeFiltered = []
         for (let index = 0; index < this.recipeData.length; index++) {
