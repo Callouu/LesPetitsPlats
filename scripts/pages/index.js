@@ -4,9 +4,15 @@ class Home {
         this.dataApi = new RecipeApi("./data/recipes.json");
         this.recipeData = []
         this.recipeFiltered = []
+        this.filters = {
+            "ingredients": [],
+            "appliances": [],
+            "ustensils": []
+        }
         this.ingredientsDropdown = new Dropdown('ingredients',[])
         this.appliancesDropdown = new Dropdown('appliances', [])
         this.ustensilsDropdown = new Dropdown('ustensils', [])
+        this.searchValue = ""
     }
 
     async main() {
@@ -19,6 +25,12 @@ class Home {
         // Affiche les dropdowns
         // dropdown ingredient
     }
+
+    //valeur de la searchBar
+    changeSearchValue(value) {
+        this.searchValue = value
+    }
+
     // Affichage dynamique des recettes
     refreshRecipes(recipes) {
         this.home.innerHTML=''
@@ -27,6 +39,7 @@ class Home {
             this.home.append(templateRecipe.createRecipeCard())
         })
     }
+
     // Affichage dynamique des filtres
     refreshDropdowns() {
         let dropdownData = this.processDropdowns(this.recipeFiltered)
@@ -40,6 +53,7 @@ class Home {
         this.ustensilsDropdown.elements = dropdownData.ustensils
         this.ustensilsDropdown.showElements()
     }
+    
     // Affiche la listes des filtres
     processDropdowns(recipes) {
         let data = {
@@ -47,7 +61,6 @@ class Home {
             "appliances": [],
             "ustensils": []
         }
-        let ustensils = []
         for (let index = 0; index < recipes.length; index++) {
             const recipe = recipes[index]
             // process ingredients json array
@@ -70,24 +83,42 @@ class Home {
         return data
     }
     // Recherche via la barre de recherche
-    search(value) {
+    search() {
         this.recipeFiltered = []
+        // on parcours les recettes
         for (let index = 0; index < this.recipeData.length; index++) {
             const recipe = this.recipeData[index];
-            let already = false
-            if(recipe.name.toLowerCase().includes(value.toLowerCase())) {
+            // let already = false
+            // if(recipe.name.toLowerCase().includes(this.searchValue.toLowerCase())) {
+            //      this.recipeFiltered.push(recipe)
+            //      //already = true
+            //  }
+            // Si les ingredients sont trouvés dans notre recette alors j'affiche la recette
+            if (isSubset(this.filters.ingredients, recipe.ingredients.map(item => item.ingredient)) &&
+            recipe.appliance.includes(this.filters.appliances) &&
+            isSubset(this.filters.ustensils, recipe.ustensils)) {
                 this.recipeFiltered.push(recipe)
-                already = true
             }
-            for (let index = 0; index < recipe.ingredients.length; index++) {
-                const ingredient = recipe.ingredients[index];
-                if(ingredient.ingredient.toLowerCase().includes(value.toLowerCase())) {
-                    if(already == false) {
-                        this.recipeFiltered.push(recipe)
-                        already = true
-                    }
-                }
-            }
+
+            // Si les appareils sont trouvés dans notre recette alors j'affiche la recette
+            // if(isSubset(this.filters.appliances, recipe.appliances)) {
+            //     this.recipeFiltered.push(recipe)
+            // }
+            // Si les ustensiles sont trouvés dans notre recette alors j'affiche la recette
+            // if(isSubset(this.filters.ustensils, recipe.ustensils)) {
+            //     this.recipeFiltered.push(recipe)
+            // }
+
+            //on parcours les ingredients
+            // for (let index = 0; index < recipe.ingredients.length; index++) {
+            //     const ingredient = recipe.ingredients[index]; 
+            //     if(ingredient.ingredient.toLowerCase().includes(value.toLowerCase())) {
+            //         if(already == false) {
+            //             this.recipeFiltered.push(recipe)
+            //             already = true
+            //         }
+            //     }
+            // }
         }
         console.log(this.recipeFiltered)
         this.refreshDropdowns()

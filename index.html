@@ -13,7 +13,8 @@
     <script src="scripts/models/Recipe.js" defer></script>
     <script src="scripts/templates/RecipeCard.js" defer></script>
     <script src="scripts/utils/dropdown.js" defer></script>
-    <script src="scripts/pages/index.js"defer></script>
+    <script src="scripts/utils/compare.js" defer></script>
+    <script src="scripts/pages/index.js" defer></script>
     <title>Les Petits Plats</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
                 <span>du quotidien, simples et délicieuses</span>
             </h1>
             <div>
-                <input type="text" onChange="home.search(this.value)" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
+                <input type="text" onChange="home.changeSearchValue(event)" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
                 <button aria-hidden="true" aria-label="clear"></button>
                 <label for="search-recipe" tabindex="0" aria-label="Search recipe"></label>
             </div>    
@@ -33,15 +34,15 @@
     <main>
         <div class="filter_section">
             <div class="filter_ingredients">
-                <button id="show-ingredients">Show Ingredients</button>
+                <button id="show-ingredients">Ingrédients</button>
                 <div id="list-ingredients"></div>
             </div>
             <div class="filter_appliances">
-                <button id="show-appliances">Show Appliances</button>
+                <button id="show-appliances">Appareils</button>
                 <div id="list-appliances"></div>
             </div>
             <div class="filter_ustensils">
-                <button id="show-ustensils">Show Ustensils</button>
+                <button id="show-ustensils">Ustensiles</button>
                 <div id="list-ustensils"></div>
             </div>
             <p class="recipes_count"></p>

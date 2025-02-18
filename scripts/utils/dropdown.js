@@ -11,6 +11,13 @@ class Dropdown {
         this.elements.forEach(element => {
             const listItem = document.createElement('li');
             listItem.textContent = element;
+
+            //valeur envoyé dans le search
+            listItem.addEventListener('click', () => {
+                home.filters[this.name].push(element)
+                home.search()
+                console.log(element, this.name)  
+            });
             elementList.appendChild(listItem);
         });
     }
