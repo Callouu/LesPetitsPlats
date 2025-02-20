@@ -1,7 +1,6 @@
 class Home {
     constructor() {
         this.home = document.querySelector(".card_section")
-        this.tagsContainer = document.querySelector(".tags_container"); // Create a container in HTML
         this.dataApi = new RecipeApi("./data/recipes.json");
         this.recipeData = []
         this.recipeFiltered = []
@@ -32,47 +31,8 @@ class Home {
     changeSearchValue(value) {
         this.searchValue = value.toLowerCase()
         if (this.searchValue.length >= 3) {
-            this.createTag(this.searchValue, "search");
             this.search(); // Déclencher la recherche
         }
-    }
-
-    createTag(value, type) {
-        if (!this.selectedTags.some(tag => tag.value === value)) {
-            this.selectedTags.push({ value, type });
-            this.filters[type].push(value.toLowerCase());
-
-            // Create tag element
-            const tag = document.createElement("div");
-            tag.classList.add("tag");
-            tag.innerHTML = `${value} <span class="remove-tag" data-value="${value}" data-type="${type}">×</span>`;
-            
-            // Append to tag container
-            this.tagsContainer.appendChild(tag);
-
-            // Add event listener to remove tag
-            tag.querySelector(".remove-tag").addEventListener("click", (event) => {
-                const tagValue = event.target.getAttribute("data-value");
-                const tagType = event.target.getAttribute("data-type");
-                this.removeTag(tagValue, tagType);
-            });
-
-            // Trigger search after adding a tag
-            this.search();
-        }
-    }
-
-    // Remove Tags
-    removeTag(value, type) {
-        // Remove from selected tags array
-        this.selectedTags = this.selectedTags.filter(tag => tag.value !== value);
-        this.filters[type] = this.filters[type].filter(filterValue => filterValue !== value.toLowerCase());
-
-        // Remove from UI
-        document.querySelector(`.remove-tag[data-value="${value}"]`).parentElement.remove();
-
-        // Trigger search after removing a tag
-        this.search();
     }
 
     // Affichage dynamique des recettes
@@ -96,16 +56,6 @@ class Home {
         // dropdown ustensils
         this.ustensilsDropdown.elements = dropdownData.ustensils
         this.ustensilsDropdown.showElements()
-    }
-
-    addDropdownListeners() {
-        document.querySelectorAll(".dropdown-item").forEach(item => {
-            item.addEventListener("click", (event) => {
-                const type = event.target.getAttribute("data-type"); // 'ingredients', 'appliances', 'ustensils'
-                const value = event.target.textContent.trim();
-                this.createTag(value, type);
-            });
-        });
     }
     
     // Affiche la listes des filtres
