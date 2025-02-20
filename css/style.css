@@ -142,4 +142,49 @@ li {
   color: #7A7A7A;
 }
 
+.filter_section {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 60px;
+}
+
+.dropdown_btn {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  background-color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-family: "Manrope", sans-serif;
+}
+
+.dropdown_content {
+  overflow: scroll;
+  max-height: 250px;
+}
+.dropdown_content li {
+  padding: 5px 5px 5px 15px;
+  font-size: 1rem;
+  font-family: "Manrope", sans-serif;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.card_section {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  gap: 50px;
+  padding: 40px 0;
+}
+
+.recipe_cards {
+  font-family: "Manrope", sans-serif;
+}
+
 /*# sourceMappingURL=style.css.map */
