@@ -12,7 +12,7 @@
     <script src="scripts/api/api.js" defer></script>
     <script src="scripts/models/Recipe.js" defer></script>
     <script src="scripts/templates/RecipeCard.js" defer></script>
-    <script src="scripts/utils/dropdown.js" defer></script>
+    <script src="scripts/templates/dropdown.js" defer></script>
     <script src="scripts/utils/compare.js" defer></script>
     <script src="scripts/pages/index.js" defer></script>
     <title>Les Petits Plats</title>
@@ -25,25 +25,26 @@
                 <span>du quotidien, simples et délicieuses</span>
             </h1>
             <div>
-                <input type="text" onChange="home.changeSearchValue(event)" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
+                <input type="text" oninput="home.changeSearchValue(this.value)" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
                 <button aria-hidden="true" aria-label="clear"></button>
                 <label for="search-recipe" tabindex="0" aria-label="Search recipe"></label>
             </div>    
         </div>
     </header>
     <main>
+        <div class="tags_container"></div>
         <div class="filter_section">
             <div class="filter_ingredients">
-                <button id="show-ingredients">Ingrédients</button>
-                <div id="list-ingredients"></div>
+                <button id="show-ingredients" class="dropdown_btn">Ingrédients</button>
+                <div id="list-ingredients" class="dropdown_content"></div>
             </div>
             <div class="filter_appliances">
-                <button id="show-appliances">Appareils</button>
-                <div id="list-appliances"></div>
+                <button id="show-appliances" class="dropdown_btn">Appareils</button>
+                <div id="list-appliances" class="dropdown_content"></div>
             </div>
             <div class="filter_ustensils">
-                <button id="show-ustensils">Ustensiles</button>
-                <div id="list-ustensils"></div>
+                <button id="show-ustensils" class="dropdown_btn">Ustensiles</button>
+                <div id="list-ustensils" class="dropdown_content"></div>
             </div>
             <p class="recipes_count"></p>
         </div>
