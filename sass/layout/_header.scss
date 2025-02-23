@@ -62,7 +62,7 @@
 
             }
 
-            label {
+            #searchBtn {
                 @include flex(column, center, center);
                 position: absolute;
                 right: 10px;
@@ -92,7 +92,7 @@
                 }
             }
 
-            button{
+            #clearBtn {
                 display: none;
                 //position, right, background-color;
                 @include button-delete(absolute, 80px, $color-light);

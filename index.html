@@ -27,13 +27,16 @@
             </h1>
             <div>
                 <input type="text" oninput="home.changeSearchValue(this.value)" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
-                <button aria-hidden="true" aria-label="clear"></button>
-                <label for="search-recipe" tabindex="0" aria-label="Search recipe"></label>
+                <button aria-hidden="true" aria-label="clear" id="clearBtn"></button>
+                <button for="search-recipe" id="searchBtn" tabindex="0" aria-label="Search recipe"></button>
             </div>    
         </div>
     </header>
     <main>
-        <div class="tags_container"></div>
+        <div class="tags_container">
+            <div class="tags_wrapper"></div>
+            <p class="recipe_count"></p>
+        </div>
         <div class="filter_section">
             <div class="filter_ingredients">
                 <button id="show-ingredients" class="dropdown_btn">Ingrédients</button>

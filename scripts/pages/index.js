@@ -4,16 +4,17 @@ class Home {
         this.dataApi = new RecipeApi("./data/recipes.json");
         this.recipeData = []
         this.recipeFiltered = []
-        this.selectedTags = [];
         this.filters = {
             "ingredients": [],
             "appliances": [],
             "ustensils": []
         }
-        this.ingredientsDropdown = new Dropdown('ingredients',[])
+        this.ingredientsDropdown = new Dropdown('ingredients', [])
         this.appliancesDropdown = new Dropdown('appliances', [])
         this.ustensilsDropdown = new Dropdown('ustensils', [])
         this.searchValue = ""
+        this.searchButton = document.getElementById("searchBtn")
+        this.searchButton.addEventListener("click", () => this.handleSearchButton())
     }
 
     async main() {
@@ -29,15 +30,26 @@ class Home {
 
     //valeur de la searchBar
     changeSearchValue(value) {
-        this.searchValue = value.toLowerCase()
-        if (this.searchValue.length >= 3) {
-            this.search(); // Déclencher la recherche
-        }
+        this.searchValue = value.toLowerCase();
+        this.search(); // Déclencher la recherche à chaque modification de la barre de recherche
+    }
+
+    handleSearchButton() {
+        console.log(this.searchValue)
+        const newTag = new Tag(this.searchValue)
+        newTag.createTag()
+        this.search()
+        this.resetSearch()
+    }
+
+    resetSearch() {
+        this.searchValue = "";
+        document.getElementById("search-recipe").value = "";
     }
 
     // Affichage dynamique des recettes
     refreshRecipes(recipes) {
-        this.home.innerHTML=''
+        this.home.innerHTML = ''
         recipes.forEach(recipe => {
             const templateRecipe = new RecipeCard(recipe)
             this.home.append(templateRecipe.createRecipeCard())
@@ -57,7 +69,7 @@ class Home {
         this.ustensilsDropdown.elements = dropdownData.ustensils
         this.ustensilsDropdown.showElements()
     }
-    
+
     // Affiche la listes des filtres
     processDropdowns(recipes) {
         let data = {
@@ -69,24 +81,25 @@ class Home {
             const recipe = recipes[index]
             // process ingredients json array
             recipe.ingredients.forEach(ingredient => {
-                if(!data.ingredients.includes(ingredient)) {
+                if (!data.ingredients.includes(ingredient)) {
                     data.ingredients.push(ingredient.ingredient)
                 }
             });
             // process appliance single string 
-            if(!data.appliances.includes(recipe.appliance)) {
+            if (!data.appliances.includes(recipe.appliance)) {
                 data.appliances.push(recipe.appliance)
             }
             // process ustensils classic array
             recipe.ustensils.forEach(ustensil => {
-                if(!data.ustensils.includes(ustensil)) { 
+                if (!data.ustensils.includes(ustensil)) {
                     data.ustensils.push(ustensil)
                 }
             });
         }
         return data
     }
-    // Recherche via la barre de recherche
+
+    // Recherche les recettes
     search() {
         this.recipeFiltered = []
         // on parcours les recettes
@@ -96,34 +109,29 @@ class Home {
             const matchesAppliances = this.filters.appliances.length === 0 || this.filters.appliances.includes(recipe.appliance);
             const matchesUstensils = isSubset(this.filters.ustensils, recipe.ustensils);
 
-            const matchesSearchValue = this.searchValue 
-            ? recipe.name.toLowerCase().includes(this.searchValue) || 
-              recipe.description.toLowerCase().includes(this.searchValue) || 
-              recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(this.searchValue))
-            : true;
+            const matchesSearchValue = this.searchValue
+                ? recipe.name.toLowerCase().includes(this.searchValue) ||
+                recipe.description.toLowerCase().includes(this.searchValue) ||
+                recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(this.searchValue))
+                : true;
 
             // let already = false
             // if(recipe.name.toLowerCase().includes(this.searchValue.toLowerCase())) {
             //      this.recipeFiltered.push(recipe)
             //      //already = true
             //  }
-            
+
             // Si les ingredients sont trouvés dans notre recette alors j'affiche la recette
             if (matchesIngredients && matchesAppliances && matchesUstensils && matchesSearchValue) {
                 this.recipeFiltered.push(recipe)
             }
-
-            //on parcours les ingredients
-            // for (let index = 0; index < recipe.ingredients.length; index++) {
-            //     const ingredient = recipe.ingredients[index]; 
-            //     if(ingredient.ingredient.toLowerCase().includes(value.toLowerCase())) {
-            //         if(already == false) {
-            //             this.recipeFiltered.push(recipe)
-            //             already = true
-            //         }
-            //     }
-            // }
         }
+
+        // Si aucune recette n'est trouvé, alors on affiche une erreur
+        if(this.recipeFiltered.length === 0) {
+            console.log("erreur")
+        }
+        
         console.log(this.recipeFiltered)
         this.refreshDropdowns()
         this.refreshRecipes(this.recipeFiltered)
@@ -131,4 +139,4 @@ class Home {
 }
 
 const home = new Home();
-  home.main();
+home.main();

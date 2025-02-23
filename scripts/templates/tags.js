@@ -1,7 +1,7 @@
 class Tag {
     constructor(value) {
         this.value = value
-        this.tagsContainer = document.querySelector(".tags_container");
+        this.tagsContainer = document.querySelector(".tags_wrapper");
     }
 
 
