@@ -28,12 +28,15 @@ class Home {
         // dropdown ingredient
     }
 
-    //valeur de la searchBar
+    // Actualise la recherche après 3 caractères ou si l'input est vide
     changeSearchValue(value) {
-        this.searchValue = value.toLowerCase();
-        this.search(); // Déclencher la recherche à chaque modification de la barre de recherche
+        this.searchValue = value.toLowerCase()
+        if (this.searchValue.length >= 3 || this.searchValue.length === 0) {
+            this.search();
+        }
     }
 
+    // Ajout d'un Tag après avoir cliqué sur le bouton de recherche et actualisation de la recherche
     handleSearchButton() {
         console.log(this.searchValue)
         const newTag = new Tag(this.searchValue)
@@ -42,9 +45,19 @@ class Home {
         this.resetSearch()
     }
 
+    // Supprime le contenu de la searchBar après avoir lancer la recherche
     resetSearch() {
         this.searchValue = "";
         document.getElementById("search-recipe").value = "";
+    }
+
+    // Supprime le tag et la valeur dans le this.filters pour afficher les recettes correspondantes
+    removeTag(value) {
+        document.querySelector(`.fa-xmark[data-value="${value}"]`).parentElement.remove();
+        for (let key in this.filters) {
+            this.filters[key] = this.filters[key].filter(item => item !== value);
+        }
+        this.search()
     }
 
     // Affichage dynamique des recettes
@@ -101,13 +114,14 @@ class Home {
 
     // Recherche les recettes
     search() {
+        // On reinitialise le tableau recipeFiltered
         this.recipeFiltered = []
         // on parcours les recettes
         for (let index = 0; index < this.recipeData.length; index++) {
             const recipe = this.recipeData[index];
-            const matchesIngredients = isSubset(this.filters.ingredients, recipe.ingredients.map(item => item.ingredient));
+            const matchesIngredients = isCompare(this.filters.ingredients, recipe.ingredients.map(item => item.ingredient));
             const matchesAppliances = this.filters.appliances.length === 0 || this.filters.appliances.includes(recipe.appliance);
-            const matchesUstensils = isSubset(this.filters.ustensils, recipe.ustensils);
+            const matchesUstensils = isCompare(this.filters.ustensils, recipe.ustensils);
 
             const matchesSearchValue = this.searchValue
                 ? recipe.name.toLowerCase().includes(this.searchValue) ||
@@ -115,18 +129,12 @@ class Home {
                 recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(this.searchValue))
                 : true;
 
-            // let already = false
-            // if(recipe.name.toLowerCase().includes(this.searchValue.toLowerCase())) {
-            //      this.recipeFiltered.push(recipe)
-            //      //already = true
-            //  }
-
             // Si les ingredients sont trouvés dans notre recette alors j'affiche la recette
             if (matchesIngredients && matchesAppliances && matchesUstensils && matchesSearchValue) {
                 this.recipeFiltered.push(recipe)
             }
         }
-
+        // fonction filtre
         // Si aucune recette n'est trouvé, alors on affiche une erreur
         if(this.recipeFiltered.length === 0) {
             console.log("erreur")
