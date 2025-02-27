@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,45 +20,72 @@
     <script src="scripts/pages/index.js" defer></script>
     <title>Les Petits Plats</title>
 </head>
+
 <body class="max-w-[1440px]">
     <header class="header relative flex flex-col h-[660px] p-10">
-        <div class="absolute inset-0 z-[-1] bg-cover bg-center bg-no-repeat brightness-75" style="background-image: url('../assets/logo/banner.webp');"></div>
+        <div class="absolute inset-0 z-[-1] bg-cover bg-center bg-no-repeat brightness-75"
+            style="background-image: url('../assets/logo/banner.webp');"></div>
         <img class="header_logo w-[200px]" src="assets/logo/Logo.svg" alt="Les petits plats">
         <div class="header_cta flex flex-col items-center justify-center flex-grow gap-8 mt-5 text-center">
             <h1 class="flex flex-col text-yellow-400 font-anton text-4xl uppercase font-thin">
-                <span>Cherchez parmi plus de 1500 recettes</span> 
+                <span>Cherchez parmi plus de 1500 recettes</span>
                 <span>du quotidien, simples et délicieuses</span>
             </h1>
             <div class="relative w-full max-w-4xl">
-                <input class="w-full h-[70px] pl-8 text-base font-manrope rounded-lg bg-white focus:outline-yellow-400" type="text" oninput="home.changeSearchValue(this.value)" id="search-recipe" placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
-                <button class="absolute top-1/2 right-20 hidden transform -translate-y-1/2 bg-white hover:text-yellow-400 focus:text-yellow-400" aria-hidden="true" aria-label="clear" id="clearBtn"></button>
-                <button class="group absolute top-2.5 right-2.5 flex items-center justify-center w-12 h-12 bg-black rounded-lg hover:bg-yellow-400 cursor-pointer focus:bg-yellow-400" for="search-recipe" id="searchBtn" tabindex="0" aria-label="Search recipe">
+                <input class="w-full h-[70px] pl-8 text-base font-manrope rounded-lg bg-white focus:outline-yellow-400"
+                    type="text" oninput="home.changeSearchValue(this.value)" id="search-recipe"
+                    placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
+                <button
+                    class="absolute top-1/2 right-20 hidden transform -translate-y-1/2 bg-white hover:text-yellow-400 focus:text-yellow-400"
+                    aria-hidden="true" aria-label="clear" id="clearBtn"></button>
+                <button
+                    class="group absolute top-2.5 right-2.5 flex items-center justify-center w-12 h-12 bg-black rounded-lg hover:bg-yellow-400 cursor-pointer focus:bg-yellow-400"
+                    for="search-recipe" id="searchBtn" tabindex="0" aria-label="Search recipe">
                     <i class="fas fa-search text-white group-hover:text-black"></i>
                 </button>
-            </div>    
+            </div>
         </div>
     </header>
     <main>
         <div class="tags_container">
-            <p class="recipe_count"></p>
         </div>
-        <div class="filter_section">
-            <div class="filter_ingredients">
-                <button id="show-ingredients" class="dropdown_btn">Ingrédients</button>
-                <div id="list-ingredients" class="dropdown_content"></div>
+        <div class="filter_section flex flex-wrap gap-14">
+            <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
+                <div class="filter_ingredients absolute w-full bg-white overflow-hidden rounded-[10px]">
+                    <button id="show-ingredients"
+                        class="flex flex-row justify-between items-center h-[60px] w-full bg-white text-[1.1rem] font-medium p-[15px] font-manrope hover:bg-yellow-400">
+                        <span>Ingrédients</span>
+                        <span class="fa-solid fa-chevron-down"></span>
+                    </button>
+                    <div id="list-ingredients" class="dropdown_content"></div>
+                </div>
             </div>
-            <div class="filter_appliances">
-                <button id="show-appliances" class="dropdown_btn">Appareils</button>
-                <div id="list-appliances" class="dropdown_content"></div>
+            <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
+                <div class="filter_appliances absolute w-full bg-white overflow-hidden rounded-[10px]">
+                    <button id="show-appliances"
+                        class="dropdown_btn flex items-center justify-between w-full h-15 p-4 text-lg font-medium bg-white font-manrope hover:bg-yellow-400">
+                        <span>Appareils</span>
+                        <span class="fa-solid fa-chevron-down"></span>
+                    </button>
+                    <div id="list-appliances" class="dropdown_content"></div>
+                </div>
             </div>
-            <div class="filter_ustensils">
-                <button id="show-ustensils" class="dropdown_btn">Ustensiles</button>
-                <div id="list-ustensils" class="dropdown_content"></div>
+            <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
+                <div class="filter_ustensils absolute w-full bg-white overflow-hidden rounded-[10px]">
+                    <button id="show-ustensils"
+                        class="dropdown_btn flex items-center justify-between w-full h-15 p-4 text-lg font-medium bg-white font-manrope hover:bg-yellow-400">
+                        <span>Ustensiles</span>
+                        <span class="fa-solid fa-chevron-down"></span>
+                    </button>
+                    <div id="list-ustensils" class="dropdown_content"></div>
+                </div>
             </div>
             <p class="recipes_count"></p>
         </div>
-        <div class="tag_section"></div>
-        <div class="card_section"></div> 
+        <div class="tag_section flex flex-wrap gap-5 mt-5"></div>
+        <div class="card_section grid justify-items-center grid-cols-[repeat(auto-fit,minmax(30%,1fr))] flex-wrap gap-[50px] px-0 py-10">
+        </div>
     </main>
 </body>
+
 </html>
