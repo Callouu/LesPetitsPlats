@@ -21,7 +21,7 @@
     <title>Les Petits Plats</title>
 </head>
 
-<body class="max-w-[1440px]">
+<body class="max-w-[1440px] mx-auto my-0">
     <header class="header relative flex flex-col h-[660px] p-10">
         <div class="absolute inset-0 z-[-1] bg-cover bg-center bg-no-repeat brightness-75"
             style="background-image: url('../assets/logo/banner.webp');"></div>
@@ -57,7 +57,14 @@
                         <span>Ingrédients</span>
                         <span class="fa-solid fa-chevron-down"></span>
                     </button>
-                    <div id="list-ingredients" class="dropdown_content"></div>
+                    <div id="list-ingredients" class="dropdown_content max-h-[250px] overflow-y-auto
+                    [&::-webkit-scrollbar]:w-2
+                    [&::-webkit-scrollbar-track]:rounded-full
+                    [&::-webkit-scrollbar-track]:bg-gray-100
+                    [&::-webkit-scrollbar-thumb]:rounded-full
+                    [&::-webkit-scrollbar-thumb]:bg-gray-300
+                    dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+                    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"></div>
                 </div>
             </div>
             <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
@@ -67,7 +74,14 @@
                         <span>Appareils</span>
                         <span class="fa-solid fa-chevron-down"></span>
                     </button>
-                    <div id="list-appliances" class="dropdown_content"></div>
+                    <div id="list-appliances" class="dropdown_content max-h-[250px] overflow-y-auto
+                    [&::-webkit-scrollbar]:w-2
+                    [&::-webkit-scrollbar-track]:rounded-full
+                    [&::-webkit-scrollbar-track]:bg-gray-100
+                    [&::-webkit-scrollbar-thumb]:rounded-full
+                    [&::-webkit-scrollbar-thumb]:bg-gray-300
+                    dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+                    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"></div>
                 </div>
             </div>
             <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
@@ -77,7 +91,14 @@
                         <span>Ustensiles</span>
                         <span class="fa-solid fa-chevron-down"></span>
                     </button>
-                    <div id="list-ustensils" class="dropdown_content"></div>
+                    <div id="list-ustensils" class="dropdown_content max-h-[250px] overflow-y-auto
+                    [&::-webkit-scrollbar]:w-2
+                    [&::-webkit-scrollbar-track]:rounded-full
+                    [&::-webkit-scrollbar-track]:bg-gray-100
+                    [&::-webkit-scrollbar-thumb]:rounded-full
+                    [&::-webkit-scrollbar-thumb]:bg-gray-300
+                    dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+                    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"></div>
                 </div>
             </div>
             <p class="recipes_count"></p>

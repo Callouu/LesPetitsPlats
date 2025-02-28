@@ -10,6 +10,7 @@ class Dropdown {
         elementList.innerHTML = '';
         this.elements.forEach(element => {
             const listItem = document.createElement('li');
+            listItem.classList.add("text-base", "cursor-pointer", "pl-[15px]", "pr-[5px]", "py-[5px]", "font-manrope", "hover:bg-yellow-400")
             listItem.textContent = element;
 
             //valeur envoyé dans le search
