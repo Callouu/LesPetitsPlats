@@ -24,6 +24,7 @@ class Home {
         this.recipeFiltered = this.recipeData
         this.refreshRecipes(this.recipeFiltered)
         this.refreshDropdowns()
+        this.recipeCount(this.recipeFiltered)
         // Affiche les dropdowns
         // dropdown ingredient
     }
@@ -34,6 +35,11 @@ class Home {
         if (this.searchValue.length >= 3 || this.searchValue.length === 0) {
             this.search();
         }
+    }
+
+    recipeCount(value) {
+        const countElement = document.querySelector(".recipes_count")
+        countElement.textContent = `${value.length} recettes`
     }
 
     // Ajout d'un Tag après avoir cliqué sur le bouton de recherche et actualisation de la recherche
@@ -74,13 +80,13 @@ class Home {
         let dropdownData = this.processDropdowns(this.recipeFiltered)
         // dropdown Ingrédients
         this.ingredientsDropdown.elements = dropdownData.ingredients
-        this.ingredientsDropdown.showElements()
+        this.ingredientsDropdown.toggleElements()
         // dropdown appliances
         this.appliancesDropdown.elements = dropdownData.appliances
-        this.appliancesDropdown.showElements()
+        this.appliancesDropdown.toggleElements()
         // dropdown ustensils
         this.ustensilsDropdown.elements = dropdownData.ustensils
-        this.ustensilsDropdown.showElements()
+        this.ustensilsDropdown.toggleElements()
     }
 
     // Affiche la listes des filtres
@@ -143,6 +149,7 @@ class Home {
         console.log(this.recipeFiltered)
         this.refreshDropdowns()
         this.refreshRecipes(this.recipeFiltered)
+        this.recipeCount(this.recipeFiltered)
     }
 }
 

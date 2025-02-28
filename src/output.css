@@ -22,6 +22,7 @@
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
     --font-weight-thin: 100;
+    --font-weight-normal: 400;
     --font-weight-medium: 500;
     --radius-lg: 0.5rem;
     --default-font-family: var(--font-sans);
@@ -38,6 +39,7 @@
     );
     --font-anton: Anton, sans-serif;
     --font-manrope: Manrope, sans-serif;
+    --color-light-grey: #ededed;
   }
 }
 @layer base {
@@ -290,6 +292,9 @@
   .flex-grow {
     flex-grow: 1;
   }
+  .grow {
+    flex-grow: 1;
+  }
   .border-collapse {
     border-collapse: collapse;
   }
@@ -309,6 +314,9 @@
   }
   .resize {
     resize: both;
+  }
+  .list-none {
+    list-style-type: none;
   }
   .grid-cols-\[repeat\(auto-fit\,minmax\(30\%\,1fr\)\)\] {
     grid-template-columns: repeat(auto-fit,minmax(30%,1fr));
@@ -362,8 +370,14 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .bg-\[\#7A7A7A\] {
+    background-color: #7A7A7A;
+  }
   .bg-black {
     background-color: var(--color-black);
+  }
+  .bg-light-grey {
+    background-color: var(--color-light-grey);
   }
   .bg-white {
     background-color: var(--color-white);
@@ -389,14 +403,23 @@
   .px-0 {
     padding-inline: calc(var(--spacing) * 0);
   }
+  .px-20 {
+    padding-inline: calc(var(--spacing) * 20);
+  }
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
   }
   .py-\[5px\] {
     padding-block: 5px;
   }
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
+  }
   .pr-\[5px\] {
     padding-right: 5px;
+  }
+  .pb-0 {
+    padding-bottom: calc(var(--spacing) * 0);
   }
   .pl-8 {
     padding-left: calc(var(--spacing) * 8);
@@ -406,6 +429,9 @@
   }
   .text-center {
     text-align: center;
+  }
+  .text-right {
+    text-align: right;
   }
   .font-anton {
     font-family: var(--font-anton);
@@ -428,9 +454,20 @@
   .text-\[1\.1rem\] {
     font-size: 1.1rem;
   }
+  .text-\[1\.2rem\] {
+    font-size: 1.2rem;
+  }
+  .leading-\[60px\] {
+    --tw-leading: 60px;
+    line-height: 60px;
+  }
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
+  }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
   }
   .font-thin {
     --tw-font-weight: var(--font-weight-thin);
@@ -582,6 +619,10 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-font-weight {
   syntax: "*";

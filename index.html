@@ -46,18 +46,16 @@
             </div>
         </div>
     </header>
-    <main>
-        <div class="tags_container">
-        </div>
+    <main class="pt-10 pb-0 px-20 bg-light-grey">
         <div class="filter_section flex flex-wrap gap-14">
             <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
                 <div class="filter_ingredients absolute w-full bg-white overflow-hidden rounded-[10px]">
                     <button id="show-ingredients"
-                        class="flex flex-row justify-between items-center h-[60px] w-full bg-white text-[1.1rem] font-medium p-[15px] font-manrope hover:bg-yellow-400">
+                        class="dropdown_btn cursor-pointer flex flex-row justify-between items-center h-[60px] w-full bg-white text-[1.1rem] font-medium p-[15px] font-manrope hover:bg-yellow-400">
                         <span>Ingrédients</span>
                         <span class="fa-solid fa-chevron-down"></span>
                     </button>
-                    <div id="list-ingredients" class="dropdown_content max-h-[250px] overflow-y-auto
+                    <div id="list-ingredients" class="dropdown_content hidden max-h-[250px] overflow-y-auto
                     [&::-webkit-scrollbar]:w-2
                     [&::-webkit-scrollbar-track]:rounded-full
                     [&::-webkit-scrollbar-track]:bg-gray-100
@@ -70,11 +68,11 @@
             <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
                 <div class="filter_appliances absolute w-full bg-white overflow-hidden rounded-[10px]">
                     <button id="show-appliances"
-                        class="dropdown_btn flex items-center justify-between w-full h-15 p-4 text-lg font-medium bg-white font-manrope hover:bg-yellow-400">
+                        class="dropdown_btn cursor-pointer flex items-center justify-between w-full h-15 p-4 text-lg font-medium bg-white font-manrope hover:bg-yellow-400">
                         <span>Appareils</span>
                         <span class="fa-solid fa-chevron-down"></span>
                     </button>
-                    <div id="list-appliances" class="dropdown_content max-h-[250px] overflow-y-auto
+                    <div id="list-appliances" class="dropdown_content hidden max-h-[250px] overflow-y-auto
                     [&::-webkit-scrollbar]:w-2
                     [&::-webkit-scrollbar-track]:rounded-full
                     [&::-webkit-scrollbar-track]:bg-gray-100
@@ -87,11 +85,11 @@
             <div class="dropdown_wrapper z-[100] relative w-[180px] h-[60px]">
                 <div class="filter_ustensils absolute w-full bg-white overflow-hidden rounded-[10px]">
                     <button id="show-ustensils"
-                        class="dropdown_btn flex items-center justify-between w-full h-15 p-4 text-lg font-medium bg-white font-manrope hover:bg-yellow-400">
+                        class="dropdown_btn cursor-pointer flex items-center justify-between w-full h-15 p-4 text-lg font-medium bg-white font-manrope hover:bg-yellow-400">
                         <span>Ustensiles</span>
                         <span class="fa-solid fa-chevron-down"></span>
                     </button>
-                    <div id="list-ustensils" class="dropdown_content max-h-[250px] overflow-y-auto
+                    <div id="list-ustensils" class="dropdown_content hidden max-h-[250px] overflow-y-auto
                     [&::-webkit-scrollbar]:w-2
                     [&::-webkit-scrollbar-track]:rounded-full
                     [&::-webkit-scrollbar-track]:bg-gray-100
@@ -101,9 +99,9 @@
                     dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"></div>
                 </div>
             </div>
-            <p class="recipes_count"></p>
+            <p class="recipes_count grow leading-[60px] text-right text-[1.2rem] font-normal font-anton"></p>
         </div>
-        <div class="tag_section flex flex-wrap gap-5 mt-5"></div>
+        <div class="tags_container flex flex-wrap gap-5 mt-5"></div>
         <div class="card_section grid justify-items-center grid-cols-[repeat(auto-fit,minmax(30%,1fr))] flex-wrap gap-[50px] px-0 py-10">
         </div>
     </main>
