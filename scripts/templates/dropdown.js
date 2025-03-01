@@ -41,11 +41,15 @@ class Dropdown {
         });
 
         elementList.classList.remove('hidden'); // Show the dropdown list
+        const chevron = document.querySelector(`#show-${this.name} .fa-chevron-down`)
+        chevron.classList.add('rotate-180')
     }
 
     // Cache la liste
     hideElements() {
         const elementList = document.getElementById(`list-${this.name}`);
         elementList.classList.add('hidden');
+        const chevron = document.querySelector(`#show-${this.name} .fa-chevron-down`);
+        chevron.classList.remove('rotate-180')
     }
 }
