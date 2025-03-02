@@ -44,7 +44,7 @@ class Dropdown {
         divInput.classList.add("mx-[15px]", "my-2.5")
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
-        //searchInput.placeholder = `Search ${this.name}`;
+        //searchInput.placeholder = `f002`;
         searchInput.classList.add('dropdown-search-input');
         searchInput.classList.add("w-full", "h-[30px]", "border", "bg-white", "pl-[5px]", "border-solid", "border-[#7A7A7A]", "outline-none", "font-manrope")
         searchInput.addEventListener('input', (event) => this.filterElements(event.target.value));
