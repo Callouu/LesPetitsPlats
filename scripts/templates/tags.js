@@ -9,8 +9,10 @@ class Tag {
         console.log(this.value)
         const tagElement = document.createElement("div")
         tagElement.classList.add("tag")
-        const tagContent = `<p>${this.value}</p>
-        <i class="fa-solid fa-xmark" data-value="${this.value}"></i>`
+        tagElement.classList.add("w-[190px]", "h-[60px]", "bg-[#FFD15B]", "flex", "flex-row", "justify-between", "items-center", "p-[15px]", "font-manrope", "rounded-[10px]")
+        const tagContent = `<p class="text-[0.8rem]">${this.value}</p>
+        <i class="fa-solid fa-xmark cursor-pointer w-2.5 hover:text-[white]" data-value="${this.value}"></i>
+        `
         tagElement.innerHTML = tagContent;
         this.tagsContainer.appendChild(tagElement);
 

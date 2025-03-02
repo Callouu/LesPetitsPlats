@@ -80,13 +80,13 @@ class Home {
         let dropdownData = this.processDropdowns(this.recipeFiltered)
         // dropdown Ingrédients
         this.ingredientsDropdown.elements = dropdownData.ingredients
-        this.ingredientsDropdown.toggleElements()
+        this.ingredientsDropdown.updateElements()
         // dropdown appliances
         this.appliancesDropdown.elements = dropdownData.appliances
-        this.appliancesDropdown.toggleElements()
+        this.appliancesDropdown.updateElements()
         // dropdown ustensils
         this.ustensilsDropdown.elements = dropdownData.ustensils
-        this.ustensilsDropdown.toggleElements()
+        this.ustensilsDropdown.updateElements()
     }
 
     // Affiche la listes des filtres
