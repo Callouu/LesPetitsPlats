@@ -207,6 +207,9 @@
   .top-5 {
     top: calc(var(--spacing) * 5);
   }
+  .top-\[77px\] {
+    top: 77px;
+  }
   .right-2\.5 {
     right: calc(var(--spacing) * 2.5);
   }
@@ -215,6 +218,9 @@
   }
   .right-20 {
     right: calc(var(--spacing) * 20);
+  }
+  .right-\[30px\] {
+    right: 30px;
   }
   .z-\[-1\] {
     z-index: -1;

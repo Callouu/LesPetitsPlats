@@ -62,7 +62,7 @@
                     "quantity": 5
                 },
                 {
-                    "ingredient": "Lait de Coco",
+                    "ingredient": "Lait de coco",
                     "quantity": 100,
                     "unit": "ml"
                 }
@@ -1374,7 +1374,7 @@
             "time": 20,
             "description": "Fouettez les oeufs, le sucre et le lait. tremper les tranches de pain. Le cuire au four pendant environ 10 minutes à 180°. Servir",
             "appliance": "Four",
-            "ustensils": ["fouet", "bol", "Cuillère à Soupe"]
+            "ustensils": ["fouet", "bol", "cuillère à Soupe"]
         },
         {
             "id": 39,

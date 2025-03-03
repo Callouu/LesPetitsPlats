@@ -144,12 +144,14 @@ class Home {
         // Si aucune recette n'est trouvé, alors on affiche une erreur
         if(this.recipeFiltered.length === 0) {
             console.log("erreur")
+            
         }
         
         console.log(this.recipeFiltered)
         this.refreshDropdowns()
         this.refreshRecipes(this.recipeFiltered)
         this.recipeCount(this.recipeFiltered)
+        //this.isFiltered = true;
     }
 }
 

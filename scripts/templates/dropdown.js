@@ -42,16 +42,24 @@ class Dropdown {
         // Search input
         const divInput = document.createElement('div')
         divInput.classList.add("mx-[15px]", "my-2.5")
+
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
-        //searchInput.placeholder = `f002`;
         searchInput.classList.add('dropdown-search-input');
         searchInput.classList.add("w-full", "h-[30px]", "border", "bg-white", "pl-[5px]", "border-solid", "border-[#7A7A7A]", "outline-none", "font-manrope")
         searchInput.addEventListener('input', (event) => this.filterElements(event.target.value));
-        elementList.appendChild(divInput);
-        divInput.appendChild(searchInput)
 
-        this.elements.forEach(element => {
+
+        const searchIcon = document.createElement('i');
+        searchIcon.classList.add('fa', 'fa-search', 'absolute', 'text-[#7A7A7A]','right-[30px]', 'top-[77px]', 'cursor-pointer');
+
+        divInput.appendChild(searchInput);
+        divInput.appendChild(searchIcon);
+        elementList.appendChild(divInput);
+
+        const uniqueElements = new Set(this.elements);
+
+        uniqueElements.forEach(element => {
             const listItem = document.createElement('li');
             listItem.classList.add("text-base", "cursor-pointer", "pl-[15px]", "pr-[5px]", "py-[5px]", "font-manrope", "list-none", "hover:bg-yellow-400")
             listItem.textContent = element;
