@@ -17,6 +17,7 @@
     <script src="scripts/templates/tags.js" defer></script>
     <script src="scripts/templates/dropdown.js" defer></script>
     <script src="scripts/utils/compare.js" defer></script>
+    <script src="scripts/utils/searchBar.js" defer></script>
     <script src="scripts/pages/index.js" defer></script>
     <!-- <script src="scripts/pages/index_algo2.js" defer></script> -->
     <title>Les Petits Plats</title>
@@ -34,11 +35,13 @@
             </h1>
             <div class="relative w-full max-w-4xl">
                 <input class="w-full h-[70px] pl-8 text-base font-manrope rounded-lg bg-white focus:outline-yellow-400"
-                    type="text" oninput="home.changeSearchValue(this.value)" id="search-recipe"
+                    type="text" oninput="home.changeSearchValue(this.value); toggleClearButton(this)" id="search-recipe"
                     placeholder="Rechercher une recette, un ingrédient,..." maxlength="50">
                 <button
-                    class="absolute top-1/2 right-20 hidden transform -translate-y-1/2 bg-white hover:text-yellow-400 focus:text-yellow-400"
-                    aria-hidden="true" aria-label="clear" id="clearBtn"></button>
+                    class="hidden cursor-pointer absolute top-1/2 right-20 transform -translate-y-1/2 bg-white hover:text-yellow-400 focus:text-yellow-400"
+                    aria-hidden="true" aria-label="clear" id="clearBtn" onclick="clearSearchInput()">
+                    <i class="fas fa-times"></i>
+                </button>
                 <button
                     class="group absolute top-2.5 right-2.5 flex items-center justify-center w-12 h-12 bg-black rounded-lg hover:bg-yellow-400 cursor-pointer focus:bg-yellow-400"
                     for="search-recipe" id="searchBtn" tabindex="0" aria-label="Search recipe">
