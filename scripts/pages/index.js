@@ -46,15 +46,15 @@ class Home {
     // Ajout d'un Tag après avoir cliqué sur le bouton de recherche et actualisation de la recherche
     handleSearchButton() {
         console.log(this.searchValue)
-        const newTag = new Tag(this.searchValue)
-        newTag.createTag()
+        //const newTag = new Tag(this.searchValue)
+        //newTag.createTag()
         this.search()
-        this.resetSearch()
+        //this.resetSearch()
     }
 
     // Supprime le contenu de la searchBar après avoir lancer la recherche
     resetSearch() {
-        this.searchValue = "";
+        //this.searchValue = "";
         document.getElementById("search-recipe").value = "";
     }
 
