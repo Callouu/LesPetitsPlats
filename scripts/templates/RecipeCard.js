@@ -33,7 +33,7 @@ class RecipeCard {
             <ul class="flex flex-wrap gap-[20px_0]">
             ${this.data.ingredients.map(ingredient => `
                 <li class="flex flex-col w-[45%]">
-                <span class="text-[0.8rem]">${ingredient.ingredient}</span>
+                <span class="text-[0.8rem]  font-medium">${ingredient.ingredient}</span>
                 <span class="text-[#7A7A7A] text-[0.8rem]">${ingredient.quantity ? `${ingredient.quantity}` : ''}${ingredient.unit ? ` ${ingredient.unit}` : ''}</span>
                 </li>
             `).join('')}

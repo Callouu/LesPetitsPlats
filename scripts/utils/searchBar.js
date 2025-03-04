@@ -14,14 +14,8 @@ function clearSearchInput() {
     home.changeSearchValue('');
 }
 
-// const clearBtn = document.getElementById('clearBtn')
-// const inputSearch = document.getElementById('search-recipe')
-
-// inputSearch.addEventListener("change", (event) => {
-//     if (event.target.value >= 3) {
-//         clearBtn.classList.remove('hidden')
-//     }
-//      else {
-//         clearBtn.classList.add('hidden')
-//     }
-// })
+function handleEnterKey(event) {
+    if (event.key === 'Enter') {
+        home.handleSearchButton();
+    }
+}

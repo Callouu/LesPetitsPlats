@@ -37,6 +37,7 @@ class Home {
         }
     }
 
+    // Affichage visuel du nombre de recettes
     recipeCount(value) {
         const countElement = document.querySelector(".recipes_count")
         countElement.textContent = `${value.length} recettes`
@@ -140,18 +141,16 @@ class Home {
                 this.recipeFiltered.push(recipe)
             }
         }
-        // fonction filtre
+
         // Si aucune recette n'est trouvé, alors on affiche une erreur
         if(this.recipeFiltered.length === 0) {
-            console.log("erreur")
-            
+            console.log("erreur")  
         }
         
         console.log(this.recipeFiltered)
         this.refreshDropdowns()
         this.refreshRecipes(this.recipeFiltered)
         this.recipeCount(this.recipeFiltered)
-        //this.isFiltered = true;
     }
 }
 
