@@ -1,3 +1,4 @@
+// Affiche le bouton de suppression après 3 caractères
 function toggleClearButton(input) {
     const clearBtn = document.getElementById('clearBtn');
     if (input.value.length >= 3) {
@@ -7,15 +8,10 @@ function toggleClearButton(input) {
     }
 }
 
+// Permet de supprimer le texte de l'input
 function clearSearchInput() {
     const searchInput = document.getElementById('search-recipe');
     searchInput.value = '';
     toggleClearButton(searchInput);
     home.changeSearchValue('');
-}
-
-function handleEnterKey(event) {
-    if (event.key === 'Enter') {
-        home.handleSearchButton();
-    }
 }

@@ -43,21 +43,6 @@ class Home {
         countElement.textContent = `${value.length} recettes`
     }
 
-    // // Ajout d'un Tag après avoir cliqué sur le bouton de recherche et actualisation de la recherche
-    // handleSearchButton() {
-    //     console.log(this.searchValue)
-    //     //const newTag = new Tag(this.searchValue)
-    //     //newTag.createTag()
-    //     this.search()
-    //     //this.resetSearch()
-    // }
-
-    // // Supprime le contenu de la searchBar après avoir lancer la recherche
-    // resetSearch() {
-    //     //this.searchValue = "";
-    //     document.getElementById("search-recipe").value = "";
-    // }
-
     // Supprime le tag et la valeur dans le this.filters pour afficher les recettes correspondantes
     removeTag(value) {
         document.querySelector(`.fa-xmark[data-value="${value}"]`).parentElement.remove();
@@ -141,13 +126,25 @@ class Home {
                 this.recipeFiltered.push(recipe)
             }
         }
-
         // Si aucune recette n'est trouvé, alors on affiche une erreur
-        if(this.recipeFiltered.length === 0) {
-            console.log("erreur")  
+        if (this.recipeFiltered.length === 0) {
+            // va verifier si le container norecipe est deja crée pour ne pas la creer une deuxieme fois
+            if (!document.querySelector(".no-recipe")) {
+                const main = document.querySelector("main")
+                const noRecipeContainer = document.createElement("span")
+                noRecipeContainer.classList.add("flex", "justify-center", "font-manrope", "text-2xl")
+                noRecipeContainer.textContent = `Aucune recette ne contient ${this.searchValue}`
+                noRecipeContainer.classList.add("no-recipe")
+                main.append(noRecipeContainer)
+                this.home.classList.add("hidden")
+            }
+        } else {
+            const errorAlreadyExist = document.querySelector(".no-recipe")
+            if (errorAlreadyExist) {
+                errorAlreadyExist.remove()
+                this.home.classList.remove("hidden")
+            }
         }
-        
-        console.log(this.recipeFiltered)
         this.refreshDropdowns()
         this.refreshRecipes(this.recipeFiltered)
         this.recipeCount(this.recipeFiltered)

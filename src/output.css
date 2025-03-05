@@ -24,6 +24,8 @@
     --text-base--line-height: calc(1.5 / 1);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
     --font-weight-thin: 100;
@@ -221,9 +223,6 @@
   .top-5 {
     top: calc(var(--spacing) * 5);
   }
-  .top-\[4px\] {
-    top: 4px;
-  }
   .top-\[5px\] {
     top: 5px;
   }
@@ -253,6 +252,24 @@
   }
   .z-\[100\] {
     z-index: 100;
+  }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
   }
   .mx-\[15px\] {
     margin-inline: 15px;
@@ -468,9 +485,6 @@
   .bg-light-grey {
     background-color: var(--color-light-grey);
   }
-  .bg-light-yellow {
-    background-color: var(--color-light-yellow);
-  }
   .bg-white {
     background-color: var(--color-white);
   }
@@ -549,6 +563,10 @@
   .font-manrope {
     font-family: var(--font-manrope);
   }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
@@ -577,6 +595,9 @@
   }
   .text-\[1\.2rem\] {
     font-size: 1.2rem;
+  }
+  .text-\[1\.5rem\] {
+    font-size: 1.5rem;
   }
   .leading-\[60px\] {
     --tw-leading: 60px;
@@ -616,9 +637,6 @@
   }
   .text-white {
     color: var(--color-white);
-  }
-  .text-yellow-400 {
-    color: var(--color-yellow-400);
   }
   .capitalize {
     text-transform: capitalize;
@@ -667,13 +685,6 @@
       }
     }
   }
-  .hover\:bg-yellow-400 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-yellow-400);
-      }
-    }
-  }
   .hover\:text-\[white\] {
     &:hover {
       @media (hover: hover) {
@@ -688,21 +699,9 @@
       }
     }
   }
-  .hover\:text-yellow-400 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-yellow-400);
-      }
-    }
-  }
   .focus\:bg-light-yellow {
     &:focus {
       background-color: var(--color-light-yellow);
-    }
-  }
-  .focus\:bg-yellow-400 {
-    &:focus {
-      background-color: var(--color-yellow-400);
     }
   }
   .focus\:text-gray-500 {
@@ -713,11 +712,6 @@
   .focus\:text-light-yellow {
     &:focus {
       color: var(--color-light-yellow);
-    }
-  }
-  .focus\:text-yellow-400 {
-    &:focus {
-      color: var(--color-yellow-400);
     }
   }
   .focus\:outline-yellow-400 {

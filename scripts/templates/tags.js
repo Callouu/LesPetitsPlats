@@ -4,7 +4,6 @@ class Tag {
         this.tagsContainer = document.querySelector(".tags_container");
     }
 
-
     createTag() {
         console.log(this.value)
         const tagElement = document.createElement("div")
