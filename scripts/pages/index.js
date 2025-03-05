@@ -25,8 +25,6 @@ class Home {
         this.refreshRecipes(this.recipeFiltered)
         this.refreshDropdowns()
         this.recipeCount(this.recipeFiltered)
-        // Affiche les dropdowns
-        // dropdown ingredient
     }
 
     // Actualise la recherche après 3 caractères ou si l'input est vide
@@ -39,8 +37,7 @@ class Home {
 
     // Affichage visuel du nombre de recettes
     recipeCount(value) {
-        const countElement = document.querySelector(".recipes_count")
-        countElement.textContent = `${value.length} recettes`
+        document.querySelector(".recipes_count").textContent = `${value.length} recettes`
     }
 
     // Supprime le tag et la valeur dans le this.filters pour afficher les recettes correspondantes
