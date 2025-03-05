@@ -43,20 +43,20 @@ class Home {
         countElement.textContent = `${value.length} recettes`
     }
 
-    // Ajout d'un Tag après avoir cliqué sur le bouton de recherche et actualisation de la recherche
-    handleSearchButton() {
-        console.log(this.searchValue)
-        //const newTag = new Tag(this.searchValue)
-        //newTag.createTag()
-        this.search()
-        //this.resetSearch()
-    }
+    // // Ajout d'un Tag après avoir cliqué sur le bouton de recherche et actualisation de la recherche
+    // handleSearchButton() {
+    //     console.log(this.searchValue)
+    //     //const newTag = new Tag(this.searchValue)
+    //     //newTag.createTag()
+    //     this.search()
+    //     //this.resetSearch()
+    // }
 
-    // Supprime le contenu de la searchBar après avoir lancer la recherche
-    resetSearch() {
-        //this.searchValue = "";
-        document.getElementById("search-recipe").value = "";
-    }
+    // // Supprime le contenu de la searchBar après avoir lancer la recherche
+    // resetSearch() {
+    //     //this.searchValue = "";
+    //     document.getElementById("search-recipe").value = "";
+    // }
 
     // Supprime le tag et la valeur dans le this.filters pour afficher les recettes correspondantes
     removeTag(value) {

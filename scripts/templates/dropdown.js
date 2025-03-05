@@ -45,16 +45,31 @@ class Dropdown {
 
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
+        searchInput.maxLength = 12;
         searchInput.classList.add('dropdown-search-input');
         searchInput.classList.add("w-full", "h-[30px]", "border", "bg-white", "pl-[5px]", "border-solid", "border-[#7A7A7A]", "outline-none", "font-manrope")
-        searchInput.addEventListener('input', (event) => this.filterElements(event.target.value));
+        searchInput.addEventListener('input', (event) => {
+            this.filterElements(event.target.value);
+            this.toggleClearButton(event.target);
+        });
 
-
+        // Search icon
         const searchIcon = document.createElement('i');
-        searchIcon.classList.add('fa', 'fa-search', 'absolute', 'text-[#7A7A7A]','right-[30px]', 'top-[77px]', 'cursor-pointer');
+        searchIcon.classList.add('fa', 'fa-search', 'absolute', 'text-[#7A7A7A]', 'right-[30px]', 'top-[77px]', 'cursor-pointer');
+
+        // Clear button
+        const clearBtn = document.createElement('button');
+        clearBtn.classList.add('hidden', 'absolute', 'cursor-pointer', 'top-[73px]', 'right-[50px]', 'text-[#7A7A7A]', 'hover:text-yellow-400', 'focus:text-yellow-400');
+        clearBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            this.filterElements('');
+            this.toggleClearButton(searchInput);
+        });
 
         divInput.appendChild(searchInput);
         divInput.appendChild(searchIcon);
+        divInput.appendChild(clearBtn);
         elementList.appendChild(divInput);
 
         const uniqueElements = new Set(this.elements);
@@ -74,12 +89,13 @@ class Dropdown {
                 // on ajoute l'element dans un tag
                 const newTag = new Tag(element)
                 newTag.createTag()
-                console.log(element, this.name)  
+                console.log(element, this.name)
             });
             elementList.appendChild(listItem);
         });
     }
 
+    // Filtre les éléments de mon dropdown
     filterElements(value) {
         const elementList = document.getElementById(`list-${this.name}`);
         const listItems = elementList.querySelectorAll('li');
@@ -90,5 +106,15 @@ class Dropdown {
                 item.style.display = 'none';
             }
         });
+    }
+
+    // Affiche le bouton de suppression
+    toggleClearButton(input) {
+        const clearBtn = input.nextElementSibling.nextElementSibling;
+        if (input.value.length > 0) {
+            clearBtn.classList.remove('hidden');
+        } else {
+            clearBtn.classList.add('hidden');
+        }
     }
 }
