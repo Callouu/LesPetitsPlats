@@ -1,4 +1,5 @@
 class Dropdown {
+    static openDropdowns = [];
     constructor(name, elements) {
         this.elements = elements
         this.name = name
@@ -9,12 +10,19 @@ class Dropdown {
 
     // Gere l'ouverture et fermeture de notre liste
     toggleElements() {
-        this.isOpen = !this.isOpen;
         if (this.isOpen) {
-            this.showElements();
-        } else {
             this.hideElements();
+        } else {
+            Dropdown.closeAllDropdowns();
+            this.showElements();
+            Dropdown.openDropdowns.push(this);
         }
+    }
+
+    // Ferme tous les dropdowns ouverts
+    static closeAllDropdowns() {
+        Dropdown.openDropdowns.forEach(dropdown => dropdown.hideElements());
+        Dropdown.openDropdowns = [];
     }
 
     // Affiche le contenu de notre dropdown
@@ -24,6 +32,7 @@ class Dropdown {
         const chevron = document.querySelector(`#show-${this.name} .fa-chevron-down`)
         chevron.classList.add('rotate-180')
         this.updateElements();
+        this.isOpen = true;
     }
 
     // Cache le contenue de notre dropdown
@@ -32,6 +41,7 @@ class Dropdown {
         elementList.classList.add('hidden');
         const chevron = document.querySelector(`#show-${this.name} .fa-chevron-down`);
         chevron.classList.remove('rotate-180')
+        this.isOpen = false;
     }
 
     // Met à jour les éléments sans changer l'état de visibilité
@@ -41,13 +51,13 @@ class Dropdown {
 
         // Search input
         const divInput = document.createElement('div')
-        divInput.classList.add("mx-[15px]", "my-2.5")
+        divInput.classList.add("relative","mx-[15px]", "my-2.5")
 
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
         searchInput.maxLength = 12;
         searchInput.classList.add('dropdown-search-input');
-        searchInput.classList.add("w-full", "h-[30px]", "border", "bg-white", "pl-[5px]", "border-solid", "border-[#7A7A7A]", "outline-none", "font-manrope")
+        searchInput.classList.add("w-full", "h-[30px]", "border", "bg-white", "pl-[5px]", "border-solid", "border-[#7A7A7A]", "outline-none", "font-manrope", "focus:text-gray-500")
         searchInput.addEventListener('input', (event) => {
             this.filterElements(event.target.value);
             this.toggleClearButton(event.target);
@@ -55,11 +65,11 @@ class Dropdown {
 
         // Search icon
         const searchIcon = document.createElement('i');
-        searchIcon.classList.add('fa', 'fa-search', 'absolute', 'text-[#7A7A7A]', 'right-[30px]', 'top-[77px]', 'cursor-pointer');
+        searchIcon.classList.add('fa', 'fa-search', 'absolute', 'text-[#7A7A7A]', 'right-[8px]', 'top-[6px]', 'cursor-pointer');
 
         // Clear button
         const clearBtn = document.createElement('button');
-        clearBtn.classList.add('hidden', 'absolute', 'cursor-pointer', 'top-[73px]', 'right-[50px]', 'text-[#7A7A7A]', 'hover:text-yellow-400', 'focus:text-yellow-400');
+        clearBtn.classList.add('hidden', 'absolute', 'cursor-pointer', 'top-[5px]', 'right-[32px]', 'text-[#7A7A7A]','text-[0.8rem]', 'hover:text-light-yellow', 'focus:text-light-yellow');
         clearBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
         clearBtn.addEventListener('click', () => {
             searchInput.value = '';
@@ -76,7 +86,7 @@ class Dropdown {
 
         uniqueElements.forEach(element => {
             const listItem = document.createElement('li');
-            listItem.classList.add("text-base", "cursor-pointer", "pl-[15px]", "pr-[5px]", "py-[5px]", "font-manrope", "list-none", "hover:bg-yellow-400")
+            listItem.classList.add("text-base", "cursor-pointer", "pl-[15px]", "pr-[5px]", "py-[5px]", "font-manrope","capitalize", "list-none", "hover:bg-light-yellow")
             listItem.textContent = element;
             listItem.dataset.value = element.toLowerCase();
 
