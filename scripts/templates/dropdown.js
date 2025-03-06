@@ -98,7 +98,6 @@ class Dropdown {
                 // on ajoute l'element dans un tag
                 const newTag = new Tag(element)
                 newTag.createTag()
-                console.log(element, this.name)
             });
             elementList.appendChild(listItem);
         });

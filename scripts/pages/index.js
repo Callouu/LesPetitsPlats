@@ -25,8 +25,6 @@ class Home {
         this.refreshRecipes(this.recipeFiltered)
         this.refreshDropdowns()
         this.recipeCount(this.recipeFiltered)
-        // Affiche les dropdowns
-        // dropdown ingredient
     }
 
     // Actualise la recherche après 3 caractères ou si l'input est vide
