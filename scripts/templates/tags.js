@@ -17,6 +17,7 @@ class Tag {
 
         tagElement.querySelector(".fa-xmark").addEventListener("click", (event) => {
             const tagValue = event.target.getAttribute("data-value");
+            // On envoie notre valeur dane remove tag qui permettra de réactualiser les recettes après suppression
             home.removeTag(tagValue);
         });
     }

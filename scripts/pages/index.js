@@ -25,6 +25,8 @@ class Home {
         this.refreshRecipes(this.recipeFiltered)
         this.refreshDropdowns()
         this.recipeCount(this.recipeFiltered)
+        // Affiche les dropdowns
+        // dropdown ingredient
     }
 
     // Actualise la recherche après 3 caractères ou si l'input est vide
@@ -74,40 +76,27 @@ class Home {
 
     // Affiche la listes des filtres
     processDropdowns(recipes) {
-        let data = {
-            "ingredients": [],
-            "appliances": [],
-            "ustensils": []
+        const data = {
+            "ingredients": new Set(),
+            "appliances": new Set(),
+            "ustensils": new Set()
         }
-        for (let index = 0; index < recipes.length; index++) {
-            const recipe = recipes[index]
-            // process ingredients json array
-            recipe.ingredients.forEach(ingredient => {
-                if (!data.ingredients.includes(ingredient)) {
-                    data.ingredients.push(ingredient.ingredient)
-                }
-            });
-            // process appliance single string 
-            if (!data.appliances.includes(recipe.appliance)) {
-                data.appliances.push(recipe.appliance)
-            }
-            // process ustensils classic array
-            recipe.ustensils.forEach(ustensil => {
-                if (!data.ustensils.includes(ustensil)) {
-                    data.ustensils.push(ustensil)
-                }
-            });
+        recipes.forEach(recipe => {
+            recipe.ingredients.forEach(ingredient => data.ingredients.add(ingredient.ingredient));
+            data.appliances.add(recipe.appliance);
+            recipe.ustensils.forEach(ustensil => data.ustensils.add(ustensil));
+        });
+        return {
+            "ingredients": Array.from(data.ingredients),
+            "appliances": Array.from(data.appliances),
+            "ustensils": Array.from(data.ustensils)
         }
-        return data
     }
 
     // Recherche les recettes
     search() {
         // On reinitialise le tableau recipeFiltered
-        this.recipeFiltered = []
-        // on parcours les recettes
-        for (let index = 0; index < this.recipeData.length; index++) {
-            const recipe = this.recipeData[index];
+        this.recipeFiltered = this.recipeData.filter(recipe => {
             const matchesIngredients = isCompare(this.filters.ingredients, recipe.ingredients.map(item => item.ingredient));
             const matchesAppliances = this.filters.appliances.length === 0 || this.filters.appliances.includes(recipe.appliance);
             const matchesUstensils = isCompare(this.filters.ustensils, recipe.ustensils);
@@ -119,10 +108,9 @@ class Home {
                 : true;
 
             // Si les ingredients sont trouvés dans notre recette alors j'affiche la recette
-            if (matchesIngredients && matchesAppliances && matchesUstensils && matchesSearchValue) {
-                this.recipeFiltered.push(recipe)
-            }
-        }
+            return matchesIngredients && matchesAppliances && matchesUstensils && matchesSearchValue;
+        });
+
         // Si aucune recette n'est trouvé, alors on affiche une erreur
         if (this.recipeFiltered.length === 0) {
             // va verifier si le container norecipe est deja crée pour ne pas la creer une deuxieme fois

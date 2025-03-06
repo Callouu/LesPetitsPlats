@@ -83,7 +83,6 @@ class Dropdown {
         elementList.appendChild(divInput);
 
         const uniqueElements = new Set(this.elements);
-
         uniqueElements.forEach(element => {
             const listItem = document.createElement('li');
             listItem.classList.add("text-base", "cursor-pointer", "pl-[15px]", "pr-[5px]", "py-[5px]", "font-manrope","capitalize", "list-none", "hover:bg-light-yellow")
