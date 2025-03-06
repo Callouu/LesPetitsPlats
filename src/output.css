@@ -414,9 +414,6 @@
   .list-none {
     list-style-type: none;
   }
-  .grid-cols-\[repeat\(auto-fit\,minmax\(30\%\,1fr\)\)\] {
-    grid-template-columns: repeat(auto-fit,minmax(30%,1fr));
-  }
   .flex-col {
     flex-direction: column;
   }
@@ -596,9 +593,6 @@
   .text-\[1\.2rem\] {
     font-size: 1.2rem;
   }
-  .text-\[1\.5rem\] {
-    font-size: 1.5rem;
-  }
   .leading-\[60px\] {
     --tw-leading: 60px;
     line-height: 60px;
@@ -717,6 +711,31 @@
   .focus\:outline-yellow-400 {
     &:focus {
       outline-color: var(--color-yellow-400);
+    }
+  }
+  .sm\:grid-cols-1 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .sm\:justify-center {
+    @media (width >= 40rem) {
+      justify-content: center;
+    }
+  }
+  .sm\:justify-items-center {
+    @media (width >= 40rem) {
+      justify-items: center;
+    }
+  }
+  .sm\:text-center {
+    @media (width >= 40rem) {
+      text-align: center;
+    }
+  }
+  .md\:grid-cols-\[repeat\(auto-fit\,minmax\(30\%\,1fr\)\)\] {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(auto-fit,minmax(30%,1fr));
     }
   }
   .\[\&\:\:-webkit-scrollbar\]\:w-2 {
