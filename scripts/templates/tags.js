@@ -5,7 +5,6 @@ class Tag {
     }
 
     createTag() {
-        console.log(this.value)
         const tagElement = document.createElement("div")
         tagElement.classList.add("tag")
         tagElement.classList.add("w-[190px]", "h-[60px]", "bg-[#FFD15B]", "flex", "flex-row", "justify-between", "items-center", "p-[15px]", "capitalize", "font-manrope", "rounded-[10px]")
