@@ -21,7 +21,7 @@ class RecipeCard {
 
         const recipeCard = `
         <p class="timer absolute text-[0.8rem] bg-[#FFD15B] px-2.5 py-[5px] rounded-[10px] right-5 top-5 font-manrope">${timer}</p>
-        <img class="w-full h-[250px] object-cover object-center" src="../assets/images/${this.data.image}" alt="${this.data.name}">
+        <img class="w-full h-[250px] object-cover object-center" src="assets/images/${this.data.image}" alt="${this.data.name}">
         <div class="card_infos flex flex-col h-3/6 gap-5 p-5">
             <h2 class="text-[1.2rem] font-thin font-anton">${this.data.name}</h2>
             <div class="card_infos--instructions flex flex-col gap-5">
