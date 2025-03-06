@@ -14,7 +14,6 @@ class Home {
         this.ustensilsDropdown = new Dropdown('ustensils', [])
         this.searchValue = ""
         this.searchButton = document.getElementById("searchBtn")
-        this.searchButton.addEventListener("click", () => this.handleSearchButton())
     }
 
     async main() {
