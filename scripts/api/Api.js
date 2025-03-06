@@ -22,7 +22,7 @@ class RecipeApi extends Api {
     constructor(url) {
         super(url)
     }
-
+    // Recuperer toutes les recettes
     async getAllRecipes() {
         const result = await this.get()
         return result.recipes
