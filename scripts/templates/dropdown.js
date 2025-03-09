@@ -91,6 +91,8 @@ class Dropdown {
 
             //valeur envoyé dans le search
             listItem.addEventListener('click', () => {
+                 // Vérifie si l'élément existe déjà dans le tableau filtered
+            if (!home.filters[this.name].includes(element)) {
                 //on ajoute l'element dans notre tableau filtered
                 home.filters[this.name].push(element)
                 //on lance la recherche
@@ -98,6 +100,7 @@ class Dropdown {
                 // on ajoute l'element dans un tag
                 const newTag = new Tag(element)
                 newTag.createTag()
+            }
             });
             elementList.appendChild(listItem);
         });
